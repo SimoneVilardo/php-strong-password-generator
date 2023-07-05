@@ -14,7 +14,8 @@
                 $n = rand(0, $alphaLength);
                 $pass[] = $alphabet[$n];
             }
-    
+            
+            header('Location: ./password.php');
             // converte l'array in una stringa
             return implode($pass); 
 

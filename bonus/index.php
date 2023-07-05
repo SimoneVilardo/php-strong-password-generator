@@ -1,5 +1,7 @@
 <?php
     include __DIR__.'/functions.php';
+    session_start();
+    $_SESSION['genPassword'] = passRandom();
 ?>
 
 <!DOCTYPE html>
@@ -17,13 +19,8 @@
                     <h1 class="bg-primary rounded text-white text-center fw-bold mb-4">Password Generator</h1>
                     <form action="index.php" method="GET">
                         <label for="psw">Lunghezza Password:</label>
-                        <input class="mb-4" type="text" name="password" id="password"><br>
+                        <input class="mb-4" type="number" min="1" max="30" name="password" id="password"><br>
                         <label for="pass">Password Generata:</label><br>
-                        <?php if (isset($_GET['password']) && $_GET['password'] > 0 && $_GET['password'] <= 30 && is_numeric($_GET['password']) == true) { ?>
-                            <div class="col-6 text-white bg-dark rounded text-center mt-1 mb-4"><?php echo passRandom(); ?></div>
-                        <?php } else if (isset($_GET['password']) && $_GET['password'] !== '') { ?>
-                            <div class="col-6 text-white bg-danger rounded text-center mt-1 mb-4">Attenzione inserire un numero da 1 a 30!</div>
-                        <?php } ?>
                         <button class="btn btn-primary" type="submit">Invia</button>
                         <button class="btn btn-danger">Annulla</button>
                     </form>
